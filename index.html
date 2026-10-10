@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register Your Interest | The Corum | BCGK</title>
+<meta name="description" content="An exclusive value-add investment opportunity in Midtown Sacramento from BCGK Property Group. Request access to the full offering.">
+<meta property="og:title" content="The Corum | Exclusive Investment Opportunity">
+<meta property="og:description" content="Request access to the full offering from BCGK Property Group.">
+<meta property="og:image" content="assets/p_cover.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#0554dc;--blue-dk:#0443b0;--navy:#0c131f;--tile:#cad6e4;--band:#ebeff4;--bg:#f5f7fa;--ink:#111;--muted:#4a5462;--line:#c9d3df;--err:#c62828;--ok:#0b8f6e}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Roboto,Arial,Helvetica,sans-serif;color:var(--ink);background:#fff;letter-spacing:.2px;line-height:1.55}
+  a{color:var(--blue)}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+  header{background:#fff;border-bottom:1px solid #e3e8ef}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+  header img{height:40px;width:auto}
+  .hdr-title{text-align:center;color:#000;line-height:1.15}
+  .hdr-name{font-family:'Archivo Black',Arial Black,sans-serif;font-size:24px;letter-spacing:.5px}
+  .hdr-sub{font-size:16px;color:#111;margin-top:2px}
+  .hdr-spacer{width:96px}
+  header .tag{color:#fff;font-family:'Archivo Black',Arial Black,sans-serif;font-size:12.5px;letter-spacing:2px;background:var(--blue);padding:7px 12px;border-radius:4px}
+
+  /* top: photos + form */
+  .top{background:var(--bg);padding:36px 0 48px}
+  .top-grid{display:grid;grid-template-columns:420px minmax(0,1fr);grid-template-areas:"intro intro" "form media" "form facts";grid-template-rows:auto auto 1fr;column-gap:36px;align-items:start}
+  .intro{grid-area:intro;margin-bottom:24px}
+  .media{grid-area:media}
+  .facts{grid-area:facts;margin-top:26px}
+  .form-col{grid-area:form;position:sticky;top:20px}
+  .eyebrow{font-family:'Archivo Black',Arial Black,sans-serif;letter-spacing:2.5px;font-size:13px;color:var(--blue);margin-bottom:8px}
+  .intro h1{font-family:Roboto,Arial,Helvetica,sans-serif;font-weight:700;font-size:42px;letter-spacing:-.3px;line-height:1.12;color:var(--navy)}
+  .intro h1 span{color:var(--blue)}
+  .intro p{font-size:18.5px;color:#2c3644;margin-top:14px;max-width:640px}
+
+  .main-photo{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:1.372;background:#dde3ea}
+  .main-photo img{width:100%;height:100%;object-fit:cover;transition:opacity .25s}
+
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .tile{background:#fff;border:1px solid #dfe5ec;border-radius:12px;padding:16px 10px;text-align:center}
+  .tile .v{font-size:28px;font-weight:700;line-height:1.1;color:var(--navy)}
+  .tile .l{font-size:13.5px;color:var(--muted);margin-top:5px}
+  .countdown{display:flex;align-items:center;gap:16px;background:#eef4ff;border:1.5px solid #c9dafc;color:var(--navy);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+  .cd-num{display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--blue);color:#fff;border-radius:10px;min-width:92px;padding:8px 10px;line-height:1}
+  .cd-num span{font-size:38px;font-weight:700;letter-spacing:-.5px}
+  .cd-num small{font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-top:5px;color:#dbe6ff}
+  .cd-text{display:flex;flex-direction:column;gap:3px;font-size:15px}
+  .cd-text b{font-size:18px}
+  .live{display:inline-flex;align-items:center;gap:8px;color:var(--muted)}
+  .countdown .dot{background:#16c172}
+  .card .reg{font-size:13.5px;margin:0 0 18px}
+  .cd-num small{white-space:nowrap}
+  .deadline{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:#fff;border-radius:40px;padding:8px 16px;font-size:15px}
+  .dot{width:9px;height:9px;border-radius:50%;background:#2ee08a}
+  .reg{font-size:14.5px;color:var(--muted)}
+  .reg b{color:var(--ink)}
+  .note{font-size:12.5px;color:#6a7480;font-style:italic;margin-top:10px}
+
+  .card{background:#fff;color:var(--ink);border-radius:14px;padding:28px 28px 24px;box-shadow:0 10px 40px rgba(12,19,31,.12);border:1px solid #e3e8ef}
+  .card h2{font-size:25px;font-weight:700;line-height:1.2;margin-bottom:4px}
+  .card .sub{font-size:15px;color:var(--muted);margin-bottom:18px}
+  .field{margin-bottom:15px}
+  .field label,.field legend{display:block;font-weight:700;font-size:14.5px;color:#2a3442;margin-bottom:6px}
+  .req{color:var(--err)}
+  .tip{position:relative;display:inline-flex;vertical-align:-3px;margin-left:4px;color:#6a7480;cursor:help;outline:none}
+  .tip:hover,.tip:focus{color:var(--blue)}
+  .tip-box{position:absolute;bottom:calc(100% + 10px);right:-90px;width:280px;background:var(--navy);color:#fff;font-size:13px;font-weight:400;line-height:1.5;padding:12px 14px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.2);opacity:0;visibility:hidden;transition:opacity .15s;z-index:10;letter-spacing:.1px}
+  .tip-box b{color:#fff}
+  .tip-box::after{content:"";position:absolute;top:100%;right:83px;border:7px solid transparent;border-top-color:var(--navy)}
+  .tip:hover .tip-box,.tip:focus .tip-box,.tip:focus-within .tip-box{opacity:1;visibility:visible}
+  @media (max-width:560px){.tip-box{right:-60px;width:250px}.tip-box::after{right:53px}}
+  .field input,.field select{width:100%;font:inherit;font-size:16px;padding:11px 13px;border:1.5px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);appearance:none}
+  .field select{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23333' stroke-width='1.6'/%3E%3C/svg%3E") right 14px center/12px no-repeat;padding-right:38px}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(5,84,220,.15)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  fieldset{border:0}
+  .radios{display:flex;gap:22px;flex-wrap:wrap}
+  .radios label{display:flex;align-items:center;gap:8px;font-weight:400;font-size:16px;margin:0;cursor:pointer;color:var(--ink)}
+  .radios input{width:18px;height:18px;accent-color:var(--blue);appearance:auto}
+  .field.invalid input,.field.invalid select{border-color:var(--err)}
+  .msg{display:none;color:var(--err);font-size:13px;margin-top:5px}
+  .field.invalid .msg{display:block}
+  .btn{display:block;width:100%;background:var(--blue);color:#fff;border:0;border-radius:8px;font:inherit;font-weight:700;font-size:18px;letter-spacing:.5px;padding:15px;cursor:pointer;margin-top:4px}
+  .btn:hover{background:var(--blue-dk)}
+  .btn[disabled]{background:#b8c2cf;color:#fff;cursor:not-allowed}
+  .btn[disabled]:hover{background:#b8c2cf}
+  .fine{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.5}
+  .thanks{display:none;text-align:center;padding:24px 6px}
+  .thanks .check{width:64px;height:64px;border-radius:50%;background:var(--ok);margin:0 auto 18px;display:flex;align-items:center;justify-content:center}
+  .thanks h4{font-size:26px;margin-bottom:10px}
+  .thanks p{font-size:16px;color:var(--muted);margin-bottom:22px}
+  .btn-dl{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:14px 24px;border-radius:8px}
+  .btn-dl:hover{background:var(--blue-dk)}
+
+  /* opportunity */
+  .opp{padding:64px 0 10px}
+  .opp-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start}
+  .kicker{font-family:'Archivo Black',Arial Black,sans-serif;letter-spacing:2.5px;font-size:13px;color:var(--blue);margin-bottom:8px}
+  .opp h3,.mid h3{font-size:32px;font-weight:700;letter-spacing:.4px;line-height:1.2;margin-bottom:16px}
+  .opp p,.mid p.body{font-size:17.5px;color:#2c3644;margin-bottom:14px}
+  .points{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .points li{background:var(--bg);border-radius:12px;padding:16px 16px 14px}
+  .points .v{font-size:24px;font-weight:700;color:var(--navy);line-height:1.15}
+  .points .l{font-size:14px;color:var(--muted);margin-top:4px}
+  .points li.wide{grid-column:span 2;background:var(--navy);color:#fff}
+  .points li.wide .v{color:#fff}
+  .points li.wide .l{color:#cfd7e2}
+  .mid{padding:30px 0 10px}
+  .mid-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:24px}
+  .mid-gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;gap:12px}
+  .mid-gallery figure{position:relative;border-radius:12px;overflow:hidden;background:#dde3ea}
+  .mid-gallery img{width:100%;height:100%;object-fit:cover}
+  .mid-gallery figcaption{position:absolute;left:10px;bottom:10px;background:#fff;color:var(--navy);font-size:13px;font-weight:700;padding:4px 10px;border-radius:20px}
+  /* gallery */
+  .gallery-sec{padding:60px 0 20px}
+  .gallery-sec h3{font-size:32px;font-weight:700;letter-spacing:.4px;margin-bottom:6px}
+  .gallery-sec .lede{font-size:17px;color:var(--muted);margin-bottom:24px}
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:12px}
+  .gallery figure{position:relative;border-radius:12px;overflow:hidden;background:#dde3ea}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+  .gallery figure:hover img{transform:scale(1.03)}
+  .gallery figcaption{position:absolute;left:10px;bottom:10px;background:#fff;color:var(--navy);font-size:13px;font-weight:700;padding:4px 10px;border-radius:20px}
+  .g-wide{grid-column:span 2}
+  .g-tall{grid-row:span 2}
+
+  .cta{padding:44px 0 64px;text-align:center}
+  .cta h3{font-size:28px;margin-bottom:8px}
+  .cta p{color:var(--muted);margin-bottom:20px}
+  .cta a{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;font-weight:700;font-size:18px;padding:15px 40px;border-radius:8px}
+  .cta a:hover{background:var(--blue-dk)}
+
+  footer{background:#000;color:#b9c0ca;padding:36px 0 44px;font-size:13px;line-height:1.6}
+  footer .top-row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+  footer img{height:36px;width:auto}
+  footer a{color:#fff}
+  footer .contact{font-size:15px;color:#fff}
+
+  @media (max-width:1000px){
+    .top-grid{grid-template-columns:1fr;grid-template-rows:none;grid-template-areas:"intro" "media" "form" "facts"}
+    .form-col{position:static;margin-top:22px}
+    .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}
+    .opp-grid,.mid-head{grid-template-columns:1fr;gap:24px}
+    .mid-gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}
+  }
+  @media (max-width:560px){
+    header .wrap{height:64px} header img{height:32px}
+    .hdr-name{font-size:18px} .hdr-sub{font-size:13px}
+    .hdr-title{text-align:right} .hdr-spacer{display:none}
+    .top{padding-top:22px}
+    .intro h1{font-size:33px}
+    .intro p{font-size:17px}
+    .tiles{grid-template-columns:repeat(2,1fr)}
+    .row2{grid-template-columns:1fr}
+    .br-desk{display:none}
+    .countdown{gap:12px;padding:12px 14px}
+    .cd-num{min-width:78px}
+    .cd-text b{font-size:16px}
+    .card{padding:24px 18px 20px}
+    .gallery{grid-auto-rows:140px;gap:8px}
+    .g-tall{grid-row:span 1}
+    .points{grid-template-columns:1fr}
+    .points li.wide{grid-column:auto}
+    .mid-gallery{grid-auto-rows:140px;gap:8px}
+    .opp h3,.mid h3{font-size:26px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img src="assets/bcgk-logo.png" alt="BCGK">
+    <div class="hdr-title">
+      <div class="hdr-name">The Corum</div>
+      <div class="hdr-sub">Investment Opportunity</div>
+    </div>
+    <span class="hdr-spacer" aria-hidden="true"></span>
+  </div>
+</header>
+
+<section class="top">
+  <div class="wrap top-grid">
+    <div class="intro">
+      <h1>Early Interest Gets Priority.<br><span>Are you in?</span></h1>
+    </div>
+
+    <div class="media">
+      <div class="main-photo"><img id="mainPhoto" src="assets/p_hero.jpg" alt="The Corum at the corner of 22nd and J Streets"></div>
+
+    </div>
+
+    <div class="facts">
+      <div class="tiles">
+        <div class="tile"><div class="v">16%</div><div class="l">Target IRR</div></div>
+        <div class="tile"><div class="v">2.0×</div><div class="l">Target Equity Multiple</div></div>
+        <div class="tile"><div class="v">5%</div><div class="l">Preferred Return, Paid Quarterly</div></div>
+        <div class="tile"><div class="v">5–7 yrs</div><div class="l">Target Hold Period</div></div>
+      </div>
+      <p class="note">Targets are not guaranteed.</p>
+    </div>
+
+    <div class="form-col">
+      <div class="card" id="access">
+        <div class="countdown" id="countdown">
+          <div class="cd-num"><span id="daysNum">--</span><small id="daysWord">days left</small></div>
+          <div class="cd-text"><span class="live"><span class="dot"></span>Funding closes</span><b>Monday, Dec. 7, 2026</b></div>
+        </div>
+        <p class="reg">506(b) offering for <b>accredited</b> investors and up to<br class="br-desk"> <b>35 non-accredited</b> investors.</p>
+        <form id="leadForm" novalidate>
+          <div class="field">
+            <label for="full_name">Full Name <span class="req">*</span></label>
+            <input id="full_name" name="full_name" type="text" autocomplete="name" required>
+            <div class="msg">Please enter your full name.</div>
+          </div>
+          <div class="field">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+            <div class="msg">Please enter a valid email address.</div>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="phone">Phone Number <span class="req">*</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555" required>
+              <div class="msg">Please enter a valid phone number.</div>
+            </div>
+            <div class="field">
+              <label for="contact_method">Contact Method <span class="req">*</span></label>
+              <select id="contact_method" name="contact_method" required>
+                <option value="" selected disabled>Please Select</option>
+                <option value="call_text">Call/Text</option>
+                <option value="email">Email</option>
+              </select>
+              <div class="msg">Please choose a contact method.</div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="investment_amount">I am able to invest the following amount: <span class="req">*</span></label>
+            <select id="investment_amount" name="investment_amount" required>
+              <option value="" selected disabled>Please Select</option>
+              <option value="75k">$75k</option>
+              <option value="100k">$100k</option>
+              <option value="200k">$200k</option>
+              <option value="300k">$300k</option>
+              <option value="400k">$400k</option>
+              <option value="500k_plus">$500k+</option>
+            </select>
+            <div class="msg">Please select an amount.</div>
+          </div>
+          <fieldset class="field" id="accreditedField">
+            <legend>Are you an accredited investor? <span class="req">*</span>
+              <span class="tip" tabindex="0" role="button" aria-label="What is an accredited investor?" aria-describedby="tipText">
+                <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 7v4.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="4.8" r="1" fill="currentColor"/></svg>
+                <span class="tip-box" id="tipText" role="tooltip">Generally, an individual with <b>$200K+ annual income</b> ($300K+ with a spouse or partner) in each of the last two years, or a <b>net worth over $1M</b> excluding their primary residence. Certain licensed professionals and entities also qualify.</span>
+              </span>
+            </legend>
+            <div class="radios">
+              <label><input type="radio" name="accredited" value="yes" required> Yes</label>
+              <label><input type="radio" name="accredited" value="no"> No</label>
+              <label><input type="radio" name="accredited" value="unsure"> Unsure</label>
+            </div>
+            <div class="msg">Please make a selection.</div>
+          </fieldset>
+          <button class="btn" type="submit" id="submitBtn" disabled aria-disabled="true">Register My Interest</button>
+          <p class="fine">By submitting, you agree to be contacted by BCGK Property Group about this offering. Your information is kept confidential.</p>
+        </form>
+
+        <div class="thanks" id="thanks" role="status" aria-live="polite">
+          <div class="check"><svg width="32" height="32" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h4>Thank you!</h4>
+          <p>Your request has been received. Download the full Corum investor deck below. A member of the BCGK team will be in touch shortly.</p>
+          <a class="btn-dl" href="assets/The-Corum-Investor-Deck.pdf" download>
+            <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Download Investor Deck (PDF)
+          </a>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="opp">
+  <div class="wrap opp-grid">
+    <div>
+      <div class="kicker">THE OPPORTUNITY</div>
+      <h3>Immediate cash flow with clear value-add upside</h3>
+      <p>The Corum is a historic mixed-use property at the highly desirable corner of 22nd and J Streets, with <b>42 apartments and two commercial tenants</b> and approximately <b>95% residential occupancy</b>.</p>
+      <p>Existing residential rents are approximately <b>20% below market</b>, creating a path to grow revenue through modest interior upgrades and gradual rent adjustments, with added upside from parking, storage, and laundry income and a potential 43rd apartment.</p>
+      <p>Recent roof and electrical upgrades and an established retail tenant secured through 2035 give BCGK a solid foundation to execute a targeted value-add strategy.</p>
+    </div>
+    <ul class="points">
+      <li class="wide"><div class="v">$425K → $578K</div><div class="l">Projected annual NOI growth (+36%)</div></li>
+      <li><div class="v">~95%</div><div class="l">Residential occupancy</div></li>
+      <li><div class="v">~20%</div><div class="l">Below-market rents</div></li>
+      <li><div class="v">2035</div><div class="l">Retail tenant lease secured through</div></li>
+      <li><div class="v">New</div><div class="l">Roof &amp; electrical upgrades</div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="gallery-sec">
+  <div class="wrap">
+    <h3>A Closer Look</h3>
+    <p class="lede">Historic 1920s character on one of Midtown’s most walkable corners.</p>
+    <div class="gallery">
+      <figure class="g-wide g-tall"><img src="assets/p_front2.jpg" alt="The Corum frontage" loading="lazy"><figcaption>Midtown Frontage</figcaption></figure>
+      <figure><img src="assets/p_walkway.jpg" alt="Upper walkway" loading="lazy"><figcaption>Walkways</figcaption></figure>
+      <figure><img src="assets/p_int2.jpg" alt="Apartment interior" loading="lazy"><figcaption>Interiors</figcaption></figure>
+      <figure><img src="assets/p_courtyard.jpg" alt="Courtyard" loading="lazy"><figcaption>Courtyard</figcaption></figure>
+      <figure><img src="assets/p_laundry.jpg" alt="On-site laundry" loading="lazy"><figcaption>On-Site Laundry</figcaption></figure>
+      <figure class="g-wide"><img src="assets/p_street.jpg" alt="Street view" loading="lazy"><figcaption>22nd &amp; J Streets</figcaption></figure>
+      <figure><img src="assets/p_otoro.jpg" alt="Ground-floor retail" loading="lazy"><figcaption>Ground-Floor Retail</figcaption></figure>
+      <figure><img src="assets/p_int1.jpg" alt="Apartment interior" loading="lazy"><figcaption>Hardwood Floors</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="mid">
+  <div class="wrap">
+    <div class="mid-head">
+      <div>
+        <div class="kicker">THE NEIGHBORHOOD</div>
+        <h3>Life in Midtown Sacramento</h3>
+      </div>
+      <p class="body">Strong rental demand, exceptional walkability, and steps from Midtown’s premier dining, retail, and entertainment, including the Midtown Farmers Market and Second Saturday art walks.</p>
+    </div>
+    <div class="mid-gallery">
+      <figure class="g-wide g-tall"><img src="assets/m_crosswalk.jpg" alt="Midtown street scene" loading="lazy"><figcaption>Walkable Streets</figcaption></figure>
+      <figure><img src="assets/m_market.jpg" alt="Midtown Farmers Market" loading="lazy"><figcaption>Farmers Market</figcaption></figure>
+      <figure><img src="assets/m_cheers.jpg" alt="Friends on a patio" loading="lazy"><figcaption>Dining &amp; Nightlife</figcaption></figure>
+      <figure><img src="assets/m_patio.jpg" alt="Outdoor patio dining at night" loading="lazy"><figcaption>Evenings Out</figcaption></figure>
+      <figure><img src="assets/m_yoga.jpg" alt="Outdoor yoga by a mural" loading="lazy"><figcaption>Arts &amp; Wellness</figcaption></figure>
+      <figure class="g-wide"><img src="assets/m_mural.jpg" alt="Midtown murals" loading="lazy"><figcaption>Murals &amp; Culture</figcaption></figure>
+      <figure class="g-wide"><img src="assets/m_concert.jpg" alt="Midtown outdoor concert" loading="lazy"><figcaption>Events &amp; Festivals</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h3>Don’t miss your spot in The Corum.</h3>
+    <p>Allocations are first come, first served. Funding closes Monday, Dec. 7, 2026.</p>
+    <a href="#access">Register My Interest</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top-row">
+      <img src="assets/bcgk-logo.png" alt="BCGK">
+      <div class="contact">Questions? <a href="mailto:invest@bcgk.com">invest@bcgk.com</a> · <a href="https://www.bcgk.com" target="_blank" rel="noopener">www.bcgk.com</a></div>
+    </div>
+    <p>This page is neither an offer to sell nor a solicitation of an offer to buy any securities. Any offer will be made only through a written offering memorandum under Rule 506(b) of Regulation D, to persons with a pre-existing relationship with the Sponsor, and only to accredited investors and up to 35 non-accredited investors. Projected returns, preferred distributions, and hold periods are targets, not guarantees. Investing involves risk, including the possible loss of principal, and interests will be illiquid.</p>
+    <p style="margin-top:10px">© 2026 BCGK Property Group. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// Days remaining until funding closes (hidden once the date passes)
+(function () {
+  var close = new Date(2026, 11, 7, 23, 59, 59);
+  var days = Math.ceil((close - new Date()) / 86400000);
+  var box = document.getElementById('countdown');
+  if (days > 0) {
+    document.getElementById('daysNum').textContent = days;
+    document.getElementById('daysWord').textContent = days === 1 ? 'day left' : 'days left';
+  } else if (box) {
+    box.querySelector('.cd-num').style.display = 'none';
+  }
+})();
+(function () {
+  var form = document.getElementById('leadForm');
+  var btn = document.getElementById('submitBtn');
+  var thanks = document.getElementById('thanks');
+
+  function setInvalid(el, bad) {
+    var field = el.closest('.field');
+    if (field) field.classList.toggle('invalid', bad);
+    return !bad;
+  }
+
+  function validate() {
+    var ok = true;
+    var name = form.full_name;
+    ok = setInvalid(name, name.value.trim().length < 2) && ok;
+    var digits = form.phone.value.replace(/\D/g, '');
+    ok = setInvalid(form.phone, digits.length < 10) && ok;
+    ok = setInvalid(form.email, !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value.trim())) && ok;
+    ok = setInvalid(form.contact_method, !form.contact_method.value) && ok;
+    ok = setInvalid(form.investment_amount, !form.investment_amount.value) && ok;
+    var acc = form.querySelector('input[name="accredited"]:checked');
+    document.getElementById('accreditedField').classList.toggle('invalid', !acc);
+    ok = !!acc && ok;
+    return ok;
+  }
+
+  // Keep the submit button disabled until every field is complete and valid
+  function isComplete() {
+    return form.full_name.value.trim().length >= 2 &&
+      form.phone.value.replace(/\D/g, '').length >= 10 &&
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value.trim()) &&
+      !!form.contact_method.value &&
+      !!form.investment_amount.value &&
+      !!form.querySelector('input[name="accredited"]:checked');
+  }
+  function updateButton() {
+    var ready = isComplete();
+    btn.disabled = !ready;
+    btn.setAttribute('aria-disabled', String(!ready));
+  }
+  form.addEventListener('input', updateButton);
+  form.addEventListener('change', updateButton);
+  updateButton();
+
+  // Clear an error as soon as the visitor fixes the field
+  form.addEventListener('input', function (e) { var f = e.target.closest('.field'); if (f) f.classList.remove('invalid'); });
+  form.addEventListener('change', function (e) { var f = e.target.closest('.field'); if (f) f.classList.remove('invalid'); });
+
+  // ---------------------------------------------------------------
+  // SUPABASE HOOK — replace this stub when the backend is ready.
+  // Payload keys match the planned table columns:
+  //   full_name, phone, email, contact_method, investment_amount,
+  //   accredited, source, submitted_at
+  // Example (supabase-js v2):
+  //   const { error } = await supabase.from('corum_leads').insert(payload);
+  //   if (error) throw error;
+  // ---------------------------------------------------------------
+  async function submitLead(payload) {
+    console.log('[Corum lead] would submit to Supabase:', payload);
+    return new Promise(function (resolve) { setTimeout(resolve, 400); });
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    if (!validate()) {
+      var first = form.querySelector('.invalid input, .invalid select');
+      if (first) first.focus();
+      return;
+    }
+    var payload = {
+      full_name: form.full_name.value.trim(),
+      phone: form.phone.value.trim(),
+      email: form.email.value.trim().toLowerCase(),
+      contact_method: form.contact_method.value,
+      investment_amount: form.investment_amount.value,
+      accredited: form.querySelector('input[name="accredited"]:checked').value,
+      source: 'corum-landing-page',
+      submitted_at: new Date().toISOString()
+    };
+    btn.disabled = true; btn.textContent = 'Submitting…';
+    try {
+      await submitLead(payload);
+      form.style.display = 'none';
+      thanks.style.display = 'block';
+    } catch (err) {
+      console.error(err);
+      btn.textContent = 'Register My Interest'; updateButton();
+      alert('Something went wrong. Please try again or email invest@bcgk.com.');
+    }
+  });
+})();
+</script>
+</body>
+</html>
