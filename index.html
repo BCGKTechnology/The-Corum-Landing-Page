@@ -118,6 +118,16 @@
   .mid-gallery figure{position:relative;border-radius:12px;overflow:hidden;background:#dde3ea}
   .mid-gallery img{width:100%;height:100%;object-fit:cover}
   .mid-gallery figcaption{position:absolute;left:10px;bottom:10px;background:#fff;color:var(--navy);font-size:13px;font-weight:700;padding:4px 10px;border-radius:20px}
+  .growth{margin-top:48px}
+  .g-head{max-width:760px;margin-bottom:20px}
+  .g-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .g-card{background:var(--bg);border-radius:12px;padding:18px 18px 16px}
+  .g-card .v{font-size:24px;font-weight:700;color:var(--blue);line-height:1.15}
+  .g-card .n{font-size:15px;font-weight:700;margin-top:6px;color:var(--navy)}
+  .g-card .d{font-size:13.5px;color:var(--muted);margin-top:3px}
+  .g-card.dark{background:var(--navy)} .g-card.dark .v{color:#9fc0ff} .g-card.dark .n{color:#fff} .g-card.dark .d{color:#cfd7e2}
+  @media (max-width:1000px){.g-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.g-grid{grid-template-columns:1fr}}
   /* gallery */
   .gallery-sec{padding:60px 0 20px}
   .gallery-sec h3{font-size:32px;font-weight:700;letter-spacing:.4px;margin-bottom:6px}
@@ -198,9 +208,9 @@
 
     <div class="facts">
       <div class="tiles">
-        <div class="tile"><div class="v">16%</div><div class="l">Target IRR</div></div>
-        <div class="tile"><div class="v">2.0×</div><div class="l">Target Equity Multiple</div></div>
-        <div class="tile"><div class="v">5%</div><div class="l">Preferred Return, Paid Quarterly</div></div>
+        <div class="tile"><div class="v">22%</div><div class="l">Target IRR</div></div>
+        <div class="tile"><div class="v">2.5×</div><div class="l">Target Equity Multiple</div></div>
+        <div class="tile"><div class="v">7%</div><div class="l">Preferred Return, Paid Quarterly</div></div>
         <div class="tile"><div class="v">5–7 yrs</div><div class="l">Target Hold Period</div></div>
       </div>
       <p class="note">Targets are not guaranteed.</p>
@@ -297,6 +307,7 @@
     </div>
     <ul class="points">
       <li class="wide"><div class="v">$425K → $578K</div><div class="l">Projected annual NOI growth (+36%)</div></li>
+      <li class="wide" style="background:var(--blue)"><div class="v">$1.5M</div><div class="l">BCGK co-investing alongside $1.5M of investor equity ($3M total raise)</div></li>
       <li><div class="v">~95%</div><div class="l">Residential occupancy</div></li>
       <li><div class="v">~20%</div><div class="l">Below-market rents</div></li>
       <li><div class="v">2035</div><div class="l">Retail tenant lease secured through</div></li>
@@ -339,6 +350,23 @@
       <figure><img src="assets/m_yoga.jpg" alt="Outdoor yoga by a mural" loading="lazy"><figcaption>Arts &amp; Wellness</figcaption></figure>
       <figure class="g-wide"><img src="assets/m_mural.jpg" alt="Midtown murals" loading="lazy"><figcaption>Murals &amp; Culture</figcaption></figure>
       <figure class="g-wide"><img src="assets/m_concert.jpg" alt="Midtown outdoor concert" loading="lazy"><figcaption>Events &amp; Festivals</figcaption></figure>
+    </div>
+    <div class="growth">
+      <div class="g-head">
+        <div class="kicker">GROWTH ON MIDTOWN’S DOORSTEP</div>
+        <h3>Nearly $5B in major investment underway nearby</h3>
+        <p class="body">Minutes from The Corum, the multi-billion-dollar <b>Sacramento Railyards</b> is transforming downtown, alongside major regional projects reshaping Sacramento.</p>
+      </div>
+      <div class="g-grid">
+        <div class="g-card"><div class="v">$1.48B</div><div class="n">Kaiser Permanente Medical Center</div><div class="d">Railyards · 310-bed main hospital ($924.4M)</div></div>
+        <div class="g-card"><div class="v">$321M–$325M</div><div class="n">Soccer Stadium &amp; Entertainment District</div><div class="d">Railyards · ~$175M privately funded stadium</div></div>
+        <div class="g-card"><div class="v">$460M</div><div class="n">New Sacramento Courthouse</div><div class="d">Railyards · planned public facility</div></div>
+        <div class="g-card"><div class="v">$140M</div><div class="n">Sacramento Valley Station Mobility Hub</div><div class="d">Railyards · transit center transformation</div></div>
+        <div class="g-card"><div class="v">$140M</div><div class="n">Railyards Housing, Phase A</div><div class="d">New housing units, more phases planned</div></div>
+        <div class="g-card dark"><div class="v">$1.3B–$1.4B</div><div class="n">SMForward Airport Expansion</div><div class="d">Largest program in SMF’s history</div></div>
+        <div class="g-card dark"><div class="v">$1.1B</div><div class="n">Aggie Square (UC Davis)</div><div class="d">Life sciences &amp; technology hub</div></div>
+      </div>
+      <p class="note">Publicly reported estimated project budgets; timelines and final costs may change.</p>
     </div>
   </div>
 </section>
