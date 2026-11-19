@@ -7,7 +7,7 @@
 //   LEAD_EMAIL_TO                     (optional, comma-separated; overrides the list below)
 
 const CONTACT = ['call_text', 'email'];
-const AMOUNTS = ['75k', '100k', '200k', '300k', '400k', '500k_plus'];
+const AMOUNTS = ['100k', '200k', '300k', '400k', '500k_plus'];
 const ACCREDITED = ['yes', 'no', 'unsure'];
 
 const DEFAULT_RECIPIENTS = [
@@ -22,7 +22,7 @@ const SUBJECT = 'The Corum - Investor Registering Interest';
 
 const LABELS = {
   contact_method: { call_text: 'Call/Text', email: 'Email' },
-  investment_amount: { '75k': '$75k', '100k': '$100k', '200k': '$200k', '300k': '$300k', '400k': '$400k', '500k_plus': '$500k+' },
+  investment_amount: { '100k': '$100k', '200k': '$200k', '300k': '$300k', '400k': '$400k', '500k_plus': '$500k+' },
   accredited: { yes: 'Yes', no: 'No', unsure: 'Unsure' }
 };
 
