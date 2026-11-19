@@ -69,6 +69,8 @@
   .field{margin-bottom:15px}
   .field label,.field legend{display:block;font-weight:700;font-size:14.5px;color:#2a3442;margin-bottom:6px}
   .req{color:var(--err)}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .form-error{display:none;background:#fdecea;color:var(--err);border-radius:8px;padding:10px 12px;font-size:14px;margin-bottom:12px}
   .tip{position:relative;display:inline-flex;vertical-align:-3px;margin-left:4px;color:#6a7480;cursor:help;outline:none}
   .tip:hover,.tip:focus{color:var(--blue)}
   .tip-box{position:absolute;bottom:calc(100% + 10px);right:-90px;width:280px;background:var(--navy);color:#fff;font-size:13px;font-weight:400;line-height:1.5;padding:12px 14px;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.2);opacity:0;visibility:hidden;transition:opacity .15s;z-index:10;letter-spacing:.1px}
@@ -277,6 +279,8 @@
             </div>
             <div class="msg">Please make a selection.</div>
           </fieldset>
+          <div class="hp" aria-hidden="true"><label for="company">Company</label><input id="company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+          <div class="form-error" id="formError" role="alert"></div>
           <button class="btn" type="submit" id="submitBtn" disabled aria-disabled="true">Register My Interest</button>
           <p class="fine">By submitting, you agree to be contacted by BCGK Property Group about this offering. Your information is kept confidential.</p>
         </form>
@@ -407,6 +411,7 @@
   var form = document.getElementById('leadForm');
   var btn = document.getElementById('submitBtn');
   var thanks = document.getElementById('thanks');
+  var formError = document.getElementById('formError');
 
   function setInvalid(el, bad) {
     var field = el.closest('.field');
@@ -451,18 +456,18 @@
   form.addEventListener('input', function (e) { var f = e.target.closest('.field'); if (f) f.classList.remove('invalid'); });
   form.addEventListener('change', function (e) { var f = e.target.closest('.field'); if (f) f.classList.remove('invalid'); });
 
-  // ---------------------------------------------------------------
-  // SUPABASE HOOK — replace this stub when the backend is ready.
-  // Payload keys match the planned table columns:
-  //   full_name, phone, email, contact_method, investment_amount,
-  //   accredited, source, submitted_at
-  // Example (supabase-js v2):
-  //   const { error } = await supabase.from('corum_leads').insert(payload);
-  //   if (error) throw error;
-  // ---------------------------------------------------------------
+  // Sends the lead to the Vercel function at /api/register, which saves it to Supabase.
   async function submitLead(payload) {
-    console.log('[Corum lead] would submit to Supabase:', payload);
-    return new Promise(function (resolve) { setTimeout(resolve, 400); });
+    var res = await fetch('/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) {
+      var msg = 'Something went wrong. Please try again or email invest@bcgk.com.';
+      try { var d = await res.json(); if (d && d.error && res.status === 400) msg = d.error; } catch (e) {}
+      throw new Error(msg);
+    }
   }
 
   form.addEventListener('submit', async function (e) {
@@ -480,8 +485,10 @@
       investment_amount: form.investment_amount.value,
       accredited: form.querySelector('input[name="accredited"]:checked').value,
       source: 'corum-landing-page',
-      submitted_at: new Date().toISOString()
+      submitted_at: new Date().toISOString(),
+      company: form.company ? form.company.value : ''
     };
+    formError.style.display = 'none';
     btn.disabled = true; btn.textContent = 'Submitting…';
     try {
       await submitLead(payload);
@@ -489,8 +496,9 @@
       thanks.style.display = 'block';
     } catch (err) {
       console.error(err);
+      formError.textContent = err.message || 'Something went wrong. Please try again or email invest@bcgk.com.';
+      formError.style.display = 'block';
       btn.textContent = 'Register My Interest'; updateButton();
-      alert('Something went wrong. Please try again or email invest@bcgk.com.');
     }
   });
 })();
