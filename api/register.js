@@ -147,7 +147,9 @@ module.exports = async function handler(req, res) {
   if (key.startsWith('eyJ')) headers.Authorization = 'Bearer ' + key;
 
   try {
-    const r = await fetch(url.replace(/\/$/, '') + '/rest/v1/corum_leads', {
+    // Accept the Project URL with or without a trailing slash or "/rest/v1" on the end.
+    const base = url.trim().replace(/\/+$/, '').replace(/\/rest\/v1$/i, '');
+    const r = await fetch(base + '/rest/v1/corum_leads', {
       method: 'POST',
       headers,
       body: JSON.stringify(lead)

@@ -239,7 +239,7 @@
           <div class="row2">
             <div class="field">
               <label for="phone">Phone Number <span class="req">*</span></label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555" required>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(555) 555-5555" required>
               <div class="msg">Please enter a valid phone number.</div>
             </div>
             <div class="field">
@@ -256,11 +256,11 @@
             <label for="investment_amount">I am able to invest the following amount: <span class="req">*</span></label>
             <select id="investment_amount" name="investment_amount" required>
               <option value="" selected disabled>Please Select</option>
-              <option value="100k">$100k</option>
-              <option value="200k">$200k</option>
-              <option value="300k">$300k</option>
-              <option value="400k">$400k</option>
-              <option value="500k_plus">$500k+</option>
+              <option value="100k">$100K</option>
+              <option value="200k">$200K</option>
+              <option value="300k">$300K</option>
+              <option value="400k">$400K</option>
+              <option value="500k_plus">$500K+</option>
             </select>
             <div class="msg">Please select an amount.</div>
           </div>
@@ -447,6 +447,47 @@
     btn.disabled = !ready;
     btn.setAttribute('aria-disabled', String(!ready));
   }
+  // Phone: visitors type digits only; the (555) 555-5555 format is applied as they type.
+  var phoneInput = form.phone;
+  function formatPhone(digits) {
+    if (!digits) return '';
+    if (digits.length < 4) return '(' + digits;
+    if (digits.length < 7) return '(' + digits.slice(0, 3) + ') ' + digits.slice(3);
+    return '(' + digits.slice(0, 3) + ') ' + digits.slice(3, 6) + '-' + digits.slice(6, 10);
+  }
+  phoneInput.addEventListener('input', function () {
+    var v = phoneInput.value;
+    var caret = phoneInput.selectionStart || v.length;
+    var digitsBeforeCaret = v.slice(0, caret).replace(/\D/g, '').length;
+    var digits = v.replace(/\D/g, '');
+    if (digits.length > 10 && digits.charAt(0) === '1') { digits = digits.slice(1); digitsBeforeCaret = Math.max(0, digitsBeforeCaret - 1); }
+    digits = digits.slice(0, 10);
+    var formatted = formatPhone(digits);
+    phoneInput.value = formatted;
+    // Keep the cursor after the same digit the visitor was editing
+    var pos = 0, seen = 0;
+    while (pos < formatted.length && seen < Math.min(digitsBeforeCaret, digits.length)) {
+      if (/\d/.test(formatted.charAt(pos))) seen++;
+      pos++;
+    }
+    if (document.activeElement === phoneInput) phoneInput.setSelectionRange(pos, pos);
+  });
+  // Backspacing right after a ")" or "-" removes the digit before it, not just the symbol
+  phoneInput.addEventListener('keydown', function (e) {
+    if (e.key !== 'Backspace') return;
+    var pos = phoneInput.selectionStart, end = phoneInput.selectionEnd;
+    if (pos !== end || pos === 0) return;
+    var prev = phoneInput.value.charAt(pos - 1);
+    if (/\d/.test(prev)) return;
+    var i = pos - 1;
+    while (i > 0 && !/\d/.test(phoneInput.value.charAt(i - 1))) i--;
+    if (i === 0) return;
+    e.preventDefault();
+    phoneInput.value = phoneInput.value.slice(0, i - 1) + phoneInput.value.slice(pos);
+    phoneInput.setSelectionRange(i - 1, i - 1);
+    phoneInput.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+
   form.addEventListener('input', updateButton);
   form.addEventListener('change', updateButton);
   updateButton();
