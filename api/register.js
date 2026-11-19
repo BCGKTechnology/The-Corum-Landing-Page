@@ -22,7 +22,7 @@ const SUBJECT = 'The Corum - Investor Registering Interest';
 
 const LABELS = {
   contact_method: { call_text: 'Call/Text', email: 'Email' },
-  investment_amount: { '100k': '$100k', '200k': '$200k', '300k': '$300k', '400k': '$400k', '500k_plus': '$500k+' },
+  investment_amount: { '100k': '$100K', '200k': '$200K', '300k': '$300K', '400k': '$400K', '500k_plus': '$500K+' },
   accredited: { yes: 'Yes', no: 'No', unsure: 'Unsure' }
 };
 
