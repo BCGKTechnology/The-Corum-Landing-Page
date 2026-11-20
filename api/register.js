@@ -5,6 +5,7 @@
 //   SUPABASE_URL, SUPABASE_ANON_KEY   (required, saves the lead)
 //   RESEND_API_KEY, LEAD_EMAIL_FROM   (required for the email alert)
 //   LEAD_EMAIL_TO                     (optional, comma-separated; overrides the list below)
+//   HUBSPOT_ACCESS_TOKEN              (optional, HubSpot private app token; adds/updates the contact)
 
 const CONTACT = ['call_text', 'email'];
 const AMOUNTS = ['100k', '200k', '300k', '400k', '500k_plus'];
@@ -30,6 +31,34 @@ function esc(v) {
   return String(v).replace(/[&<>"']/g, function (c) {
     return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
   });
+}
+
+// Adds the investor to HubSpot as a contact, or updates them if that email already exists,
+// so each person appears once. Uses the custom "corum_" contact properties.
+async function syncHubSpot(lead) {
+  const token = process.env.HUBSPOT_ACCESS_TOKEN;
+  if (!token) return;
+  const parts = lead.full_name.split(/\s+/);
+  const properties = {
+    email: lead.email,
+    firstname: parts[0],
+    lastname: parts.slice(1).join(' '),
+    phone: lead.phone,
+    corum_preferred_contact: lead.contact_method,
+    corum_investment_amount: lead.investment_amount,
+    corum_accredited_investor: lead.accredited,
+    corum_registered_at: lead.submitted_at
+  };
+  try {
+    const r = await fetch((process.env.HUBSPOT_API_URL || 'https://api.hubapi.com') + '/crm/v3/objects/contacts/batch/upsert', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+      body: JSON.stringify({ inputs: [{ idProperty: 'email', id: lead.email, properties: properties }] })
+    });
+    if (!r.ok) console.error('HubSpot sync failed', r.status, await r.text());
+  } catch (err) {
+    console.error('HubSpot sync error', err);
+  }
 }
 
 async function sendLeadEmail(lead) {
@@ -158,8 +187,8 @@ module.exports = async function handler(req, res) {
       console.error('Supabase insert failed', r.status, await r.text());
       return res.status(502).json({ error: 'Could not save your registration.' });
     }
-    // The lead is saved. Send the team alert; an email problem never blocks the investor.
-    await sendLeadEmail(lead);
+    // The lead is saved. Send the team alert and update HubSpot; neither can block the investor.
+    await Promise.all([sendLeadEmail(lead), syncHubSpot(lead)]);
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error('Supabase request error', err);
